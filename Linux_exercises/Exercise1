@@ -1,0 +1,49 @@
+Q: 
+  Task 1. Search for error messages in a log file
+  In this task, you must navigate to the /home/analyst/logs directory and report on the error messages in the server_logs.txt file. You’ll do this by using grep to search the file and output only the entries that are for errors.   
+  Navigate to the /home/analyst/logs directory.
+  Use grep to filter the server_logs.txt file, and return all lines containing the text string error.   
+
+A:
+  analyst@c2ccaa2b3ffb:~/logs$ cd  /home/analyst/logs
+  analyst@c2ccaa2b3ffb:~/logs$ ls
+  server_logs.txt
+  analyst@c2ccaa2b3ffb:~/logs$ grep error server_logs.txt
+  2022-09-28 13:56:22 error   The password is incorrect
+  2022-09-28 15:56:22 error   The username is incorrect
+  2022-09-28 16:56:22 error   The password is incorrect
+  2022-09-29 13:56:22 error   An unexpected error occurred
+  2022-09-29 15:56:22 error   Unauthorized access
+  2022-09-29 16:56:22 error   Unauthorized access
+
+Q:
+  In this task, you must navigate to the /home/analyst/reports/users directory and use the correct Linux commands and arguments to search for user data files that contain a specific string in their names.
+  
+  Navigate to the /home/analyst/reports/users directory.
+  Using the pipe character (|), pipe the output of the ls command to the grep command to list only the files containing the string Q1 in their names
+
+A:
+  analyst@c2ccaa2b3ffb:~/logs$ ls /home/analyst/reports/users | grep Q1
+  Q1_access.txt
+  Q1_added_users.txt
+  Q1_deleted_users.txt
+
+
+Q:
+  In this task, you must search for information contained in user files and report on users that were added and deleted from the system.
+  
+  Display the files in the /home/analyst/reports/users directory.
+  Search the Q2_deleted_users.txt file for the username jhill.
+
+A:
+  analyst@c2ccaa2b3ffb:~/logs$ cd /home/analyst/reports/users                     
+  analyst@c2ccaa2b3ffb:~/reports/users$ grep jhill Q2_deleted_users.txt
+  1025         jhill     Sales
+
+Q:
+  Search the Q4_added_users.txt file to list the users who were added to the Human Resources department.
+
+A:
+  analyst@c2ccaa2b3ffb:~/reports/users$ grep "Human Resources" Q4_added_users.txt
+  1151         sshah     Human Resources
+  1145         msosa     Human Resources
