@@ -1,0 +1,75 @@
+Task 1. Check file and directory details of /home/researcher2/projects
+Answer:
+  researcher2@5d7491556f14:~$ cd /home/researcher2/projects
+  researcher2@5d7491556f14:~/projects$ ls -l
+  total 20
+  drwx--x--- 2 researcher2 research_team 4096 Jul 16 19:10 drafts
+  -rw-rw-rw- 1 researcher2 research_team   46 Jul 16 19:10 project_k.txt
+  -rw-r----- 1 researcher2 research_team   46 Jul 16 19:10 project_m.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_r.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_t.txt
+  researcher2@5d7491556f14:~/projects$ 
+
+Task1b: What is the name of the group that owns the files in the projects directory?
+Answer: researcher_team
+
+Task1c: Check the hidden files
+Answer:
+  researcher2@5d7491556f14:~/projects$ ls -la
+  total 32
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:10 .
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:56 ..
+  -rw--w---- 1 researcher2 research_team   46 Jul 16 19:10 .project_x.txt
+  drwx--x--- 2 researcher2 research_team 4096 Jul 16 19:10 drafts
+  -rw-rw-rw- 1 researcher2 research_team   46 Jul 16 19:10 project_k.txt
+  -rw-r----- 1 researcher2 research_team   46 Jul 16 19:10 project_m.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_r.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_t.txt
+
+Task1d: name the hidden hiles
+Answer: .project_x.txt
+
+
+Task2: Change file permissions. Check whether the projects directory have any files with write permissions for the owner type of other
+Answer:
+  researcher2@5d7491556f14:~$ cd projects
+  researcher2@5d7491556f14:~/projects$ ls -la
+  total 32
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:10 .
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:56 ..
+  -rw--w---- 1 researcher2 research_team   46 Jul 16 19:10 .project_x.txt
+  drwx--x--- 2 researcher2 research_team 4096 Jul 16 19:10 drafts
+  -rw-rw-rw- 1 researcher2 research_team   46 Jul 16 19:10 project_k.txt  <-------- ANSWER
+  -rw-r----- 1 researcher2 research_team   46 Jul 16 19:10 project_m.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_r.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_t.txt
+
+Task2b: Change the permissions of the file identified in the previous step so that the owner type of other doesn’t have write permissions.
+Answer: 
+  researcher2@5d7491556f14:~/projects$ chmod o-w project_k.txt
+  researcher2@5d7491556f14:~/projects$ ls -la
+  total 32
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:10 .
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:56 ..
+  -rw--w---- 1 researcher2 research_team   46 Jul 16 19:10 .project_x.txt
+  drwx--x--- 2 researcher2 research_team 4096 Jul 16 19:10 drafts
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_k.txt
+  -rw-r----- 1 researcher2 research_team   46 Jul 16 19:10 project_m.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_r.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_t.txt
+  researcher2@5d7491556f14:~/projects$ 
+
+Task2c: Change the permissions of the project_m.txt, file so that the group doesnt have read or write permissions
+Answer: 
+  researcher2@5d7491556f14:~/projects$ chmod g-rw project_m.txt
+  researcher2@5d7491556f14:~/projects$ ls -la
+  total 32
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:10 .
+  drwxr-xr-x 3 researcher2 research_team 4096 Jul 16 19:56 ..
+  -rw--w---- 1 researcher2 research_team   46 Jul 16 19:10 .project_x.txt
+  drwx--x--- 2 researcher2 research_team 4096 Jul 16 19:10 drafts
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_k.txt
+  -rw------- 1 researcher2 research_team   46 Jul 16 19:10 project_m.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_r.txt
+  -rw-rw-r-- 1 researcher2 research_team   46 Jul 16 19:10 project_t.txt
+  researcher2@5d7491556f14:~/projects$ 
