@@ -1,0 +1,96 @@
+Original:
+home
+└── analyst
+    ├── notes
+    │   ├── Q3patches.txt
+    │   └── tempnotes.txt
+    ├── reports
+    │   ├── Q1patches.txt
+    │   └── Q2patches.txt
+    └── temp
+Organize original structure to: 
+home
+└── analyst
+    ├── logs
+    ├── notes
+    │   └── tasks.txt    
+    └── reports
+        ├── Q1patches.txt
+        └── Q2patches.txt
+        └── Q3patches.txt
+
+
+Task1:
+  Create a new subdirectory called logs in the /home/analyst
+Answer:
+  analyst@05dd9831188a:~$ cd /home/analyst  
+  analyst@05dd9831188a:~$ mkdir logs
+  analyst@05dd9831188a:~$ ls
+  logs  notes  reports  temp
+
+Task2:
+  Remove the /home/analyst/temp directory
+Answer:
+  analyst@05dd9831188a:~$ rmdir temp
+  analyst@05dd9831188a:~$ ls
+  logs  notes  reports
+  analyst@05dd9831188a:~$ 
+
+Task3: 
+  Move a file 
+  The Q3.patches.txt file contains notes taken on third quarter patches and is now in correct reporting format
+  Move this file from notes directory to reports directory
+  Q3.patches.txt is located in /home/analyst/notes
+Answer:
+  analyst@05dd9831188a:~$ cd notes
+  analyst@05dd9831188a:~/notes$ ls
+  Q3patches.txt  tempnotes.txt
+  analyst@05dd9831188a:~/notes$ mv Q3patches.txt /home/analyst/reports
+  analyst@05dd9831188a:~/notes$ ls
+  tempnotes.txt
+  analyst@05dd9831188a:~/notes$ cd ..
+  analyst@05dd9831188a:~$ ls
+  logs  notes  reports
+  analyst@05dd9831188a:~$ cd reports
+  analyst@05dd9831188a:~/reports$ ls
+  Q1patches.txt  Q2patches.txt  Q3patches.txt
+
+Task4:
+  Remove a file
+  Deleted unused file called tempnotes.txt from the /home/analyst/notes
+AnswerL
+  analyst@05dd9831188a:~/notes$ cd ..
+  analyst@05dd9831188a:~$ cd notes
+  analyst@05dd9831188a:~/notes$ ls
+  tempnotes.txt
+  analyst@05dd9831188a:~/notes$ rm tempnotes.txt
+  analyst@05dd9831188a:~/notes$ ls
+  analyst@05dd9831188a:~/notes$ 
+
+Task5:
+  Create a file named tasks.txt in the same dirtectory as above
+Answer:
+  analyst@05dd9831188a:~/notes$ touch tasks.txt
+  analyst@05dd9831188a:~/notes$ ls
+  tasks.txt
+
+Task6:
+  Edit the tasks.txt file and add a note describing the task you have completed ->   
+  Completed tasks
+  1. Managed file structure in /home/analyst
+
+Answer:
+  analyst@05dd9831188a:~/notes$ nano tasks.txt
+  --------------------------------------------
+  Nano text editor
+  --------------------------------------------
+    Completed tasks
+  1. Managed file structure in /home/analyst
+
+  (control X) -> (y) -> (Enter)
+  --------------------------------------------
+  alyst@05dd9831188a:~/notes$ cat tasks.txt
+  Completed tasks
+
+  1. Managed file structure in /home/analyst
+  analyst@05dd9831188a:~/notes$ 
