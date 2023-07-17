@@ -1,0 +1,40 @@
+Scenario: 
+In this scenario, a new employee with the username researcher9 joins an organization. You have to add them to the system
+and continue manage their access during their time with the organization.
+First: add a new employee to the system and then to their primary group
+Second: make this employee the owner of a file related to a particular project
+Third: add the new employee to a supplementary group
+Finally: delete the employee from the system 
+
+Note: The lab starts with you logged in as user analyst, with your home directory, /home/analyst, as the current working directory.
+
+Task1: 
+  add the user "researcher9" and assign the user to group "research_team" as the primary group
+Answer:
+  analyst@e51511d6e66e:~$ sudo useradd -g research_team researcher9
+
+Task2:
+  The new employee researcher9 will take responsiblity for project_r. In this task, you must make them the owner of the project_r.txt file.
+  The project_r.txt file is located in the /home/researcher2/projects directory and owned by the researcher2 user
+Answer:
+  analyst@e51511d6e66e:~$ sudo chown researcher9 /home/researcher2/projects/project_r.txt
+  analyst@e51511d6e66e:~$ ls -l /home/researcher2/projects/project_r.txt
+  -rw-rw-r-- 1 researcher9 research_team 46 Jul 16 23:29 /home/researcher2/projects/project_r.txt
+  analyst@e51511d6e66e:~$ 
+
+Task3:
+  Add the user to a secondary group "sales_team"
+Answer: 
+  analyst@e51511d6e66e:~$ sudo usermod -a  -G sales_team researcher9
+  analyst@e51511d6e66e:~$ groups researcher9
+  researcher9   :   research_team sales_team
+
+
+Task4: 
+  Delete researcher9 
+Answer:
+  analyst@e51511d6e66e:~$ sudo userdel researcher9                  
+  analyst@e51511d6e66e:~$ groups researcher9
+  groups: 'researcher9': no such user
+  analyst@e51511d6e66e:~$ sudo groupdel researcher9
+  groupdel: group 'researcher9' does not exist
