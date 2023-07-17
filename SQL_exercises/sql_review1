@@ -1,0 +1,105 @@
+#########################
+        Scenario
+#########################
+
+In this scenario, you have to determine which employee devices must be updated. You also need to investigate user login activity to explore if any unusual activity has occurred.
+The information you need is located in the machines and login_attempts tables in the organization database.
+Here’s how you’ll do this task: First, you’ll obtain information on the employee devices that must be updated. Next, you’ll examine the login attempts for unusual activity. 
+Finally, you’ll use the ORDER BY keyword to sort the data returned by your SQL queries.
+OK, let’s get ready to practice running your very first SQL queries!
+
+Task1. Retrieve employee device data
+        In this task, you need to obtain information on employee devices because your team needs to update them. The information you need is in the machines table in the organization database.
+        First, you need to retrieve all the information about the employee devices.
+
+Answer:
+        MariaDB [organizations]> SELECT * FROM machines;
++--------------+------------------+----------------+---------------+-------------+
+| device_id    | operating_system | email_client   | OS_patch_date | employee_id |
++--------------+------------------+----------------+---------------+-------------+
+| a184b775c707 | OS 1             | Email Client 1 | 2021-09-01    |        1156 |
+| a192b174c940 | OS 2             | Email Client 1 | 2021-06-01    |        1052 |
+| a305b818c708 | OS 3             | Email Client 2 | 2021-06-01    |        1182 |
+| a317b635c465 | OS 1             | Email Client 2 | 2021-03-01    |        1130 |
+
+Task1b. Retrieve all information regarding device_id and email_client
+
+Answer:
+        MariaDB [organizations]> SELECT device_id, email_client FROM machines;
++--------------+----------------+
+| device_id    | email_client   |
++--------------+----------------+
+| a184b775c707 | Email Client 1 |
+| a192b174c940 | Email Client 1 |
+| a305b818c708 | Email Client 2 |
+| a317b635c465 | Email Client 2 |
+| a320b137c219 | Email Client 2 |
+| a398b471c573 | Email Client 2 |
+
+Task2. Investigate login activity. 
+In this task, you need to analyze the information from the log_in_attempts table to determine if any unusual activity has occurred.
+First, you need to investigate the locations where login attempts were made to ensure that they’re in expected areas (the United States, Canada, or Mexico).
+Were any login attempts made from Australia?
+
+Answer:
+      MariaDB [organization]> SELECT DISTINCT country FROM log_in_attempts;
++---------+
+| country |
++---------+
+| CAN     |
+| USA     |
+| CANADA  |
+| MEXICO  |
+| US      |
+| MEX     |
++---------+
+
+
+Task2B. Select username, login_date, log
+  
+Answer:
+      MariaDB [organization]> SELECT username, login_date, login_time FROM log_in_attempts;
++----------+------------+------------+
+| username | login_date | login_time |
++----------+------------+------------+
+| jrafael  | 2022-05-09 | 04:56:27   |
+| apatel   | 2022-05-10 | 20:27:27   |
+| dkot     | 2022-05-09 | 06:47:41   |
+| dkot     | 2022-05-08 | 02:00:39   |
+| jrafael  | 2022-05-11 | 03:05:59   |
+| arutley  | 2022-05-12 | 17:00:59   |
+| eraab    | 2022-05-11 | 01:45:14   |
+| bisles   | 2022-05-08 | 01:30:17   |
+| yappiah  | 2022-05-11 | 13:47:29   |
+| jrafael  | 2022-05-12 | 09:33:19   |
+
+
+Task 3. Order login attempts data by log in dates
+
+Answer:
+      MariaDB [organization]> SELECT * FROM log_in_attempts ORDER BY login_date;
++----------+----------+------------+------------+---------+-----------------+---------+
+| event_id | username | login_date | login_time | country | ip_address      | success |
++----------+----------+------------+------------+---------+-----------------+---------+
+|      145 | ivelasco | 2022-05-08 | 09:06:02   | CANADA  | 192.168.39.196  |       1 |
+|      163 | tmitchel | 2022-05-08 | 09:21:16   | MEX     | 192.168.119.29  |       0 |
+|       36 | asundara | 2022-05-08 | 09:00:42   | US      | 192.168.78.151  |       1 |
+|      165 | jreckley | 2022-05-08 | 15:28:43   | MEXICO  | 192.168.34.193  |       0 |
+|      168 | jlansky  | 2022-05-08 | 13:25:42   | USA     | 192.168.210.94  |       1 |
+|      169 | alevitsk | 2022-05-08 | 08:10:43   | CANADA  | 192.168.210.228 |       0 |
+
+
+Task 3b. Order further by including login_time
+
+Answer:  
+      MariaDB [organization]> SELECT * FROM log_in_attempts ORDER BY login_date, login_time;
++----------+----------+------------+------------+---------+-----------------+---------+
+| event_id | username | login_date | login_time | country | ip_address      | success |
++----------+----------+------------+------------+---------+-----------------+---------+
+|      117 | bsand    | 2022-05-08 | 00:19:11   | USA     | 192.168.197.187 |       0 |
+|       92 | pwashing | 2022-05-08 | 00:36:12   | US      | 192.168.247.219 |       0 |
+|        8 | bisles   | 2022-05-08 | 01:30:17   | US      | 192.168.119.173 |       0 |
+|        4 | dkot     | 2022-05-08 | 02:00:39   | USA     | 192.168.178.71  |       0 |
+|       80 | cjackson | 2022-05-08 | 02:18:10   | CANADA  | 192.168.33.140  |       1 |
+|       43 | mcouliba | 2022-05-08 | 02:35:34   | CANADA  | 192.168.16.208  |       0 |
+|      184 | alevitsk | 2022-05-08 | 03:09:48   | CAN     | 192.168.33.70   |       0 |
