@@ -1,0 +1,31 @@
+#######################
+SQL_review_filtering2
+#######################
+
+Task 1. Retrieve data for login attempts made after '2022-05-09'. 
+Answer:
+      SELECT * 
+      FROM log_in_attempts 
+      WHERE login_date > '2022-05-09';
+
+Task 2. Retrieve data for login attempts that were made on or after '2022-05-09'. 
+Answer:
+      SELECT * 
+      FROM log_in_attempts 
+      WHERE login_date >= '2022-05-09';
+
+Task 3. Login attempts made after '2022-05-11' shouldn't be included. 
+Use the BETWEEN and AND operators to return results between '2022-05-09' and '2022-05-11'
+Answer:
+      SELECT * 
+      FROM log_in_attempts 
+      WHERE login_date BETWEEN '2022-05-09' AND '2022-05-11';
+
+Task 4. Write a query to return login attempts with event_id greater than or equal to 100.
+Answer:
+      SELECT * FROM log_in_attempts WHERE event_id >= 100;
+
+Task 5. Modify the query to return only login attempts with event_id between 100 and 150.
+Answer:
+      SELECT * FROM log_in_attempts WHERE event_id BETWEEN 100 AND 150;
+
