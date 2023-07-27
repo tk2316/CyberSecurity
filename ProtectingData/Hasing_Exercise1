@@ -1,0 +1,32 @@
+Task1: Read file1.txt, file2.txt in the /home/analyst directory
+Answer1:
+  analyst@af0851aaada5:~$ ls -la
+  total 36
+  drwxr-xr-x 2 analyst analyst 4096 Jul 26 22:26 .
+  drwxr-xr-x 1 root    root    4096 Jul 26 22:10 ..
+  -rw------- 1 analyst analyst   15 Jul 26 22:27 .bash_history
+  -rw-r--r-- 1 analyst analyst  220 Apr 18  2019 .bash_logout
+  -rw-r--r-- 1 analyst analyst 3574 Jul 26 22:10 .bashrc
+  -rw-r--r-- 1 analyst analyst 3574 Jul 26 22:10 .profile
+  -rw-r--r-- 1 root    root      69 Jul 26 22:10 file1.txt
+  -rw-r--r-- 1 root    root      79 Jul 26 22:10 file2.txt
+  analyst@af0851aaada5:~$ cat file1.txt
+  X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*
+  analyst@af0851aaada5:~$ cat file2.txt
+  X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*
+
+
+Task2: Even thought the content of the two files are identical, we have to create a hash values for each file to be able to differentiate that they two different files
+Answer2:
+  analyst@af0851aaada5:~$ sha256sum file1.txt
+  131f95c51cc819465fa1797f6ccacf9d494aaaff46fa3eac73ae63ffbdfd8267  file1.txt
+  analyst@af0851aaada5:~$ sha256sum file2.txt
+  2558ba9a4cad1e69804ce03aa2a029526179a91a5e38cb723320e83af9ca017b  file2.txt
+  analyst@af0851aaada5:~$ 
+
+Task3: Create two files containing the hash values of each file and compare the hash values
+Solution3:
+  analyst@af0851aaada5:~$ sha256sum file1.txt >> file1hash
+  analyst@af0851aaada5:~$ sha256sum file2.txt >> file2hash
+  analyst@af0851aaada5:~$ cmp file1hash file2hash
+  file1hash file2hash differ: char 1, line 1
