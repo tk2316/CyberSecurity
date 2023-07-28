@@ -1,0 +1,32 @@
+Summary of the incident:
+- Summary of the incident
+    - U.S. health care clinic
+    - Tuesday morning, apx. 9:00 am
+    - Several employees said they were unable to use their computers to access files like medical records
+    - Business operations shut down due to the inability to access required files and programs
+    - Ransom note was found displayed on the employees computers
+        - Files were encrypted by unethical hacking organization
+        - Demanded lage sum of money for the decryption key
+    - It turns out the the hackers were abled to gain access into the company’s network by using targeted phishing emails which contained malicious attachment that installed malware on the employee’s computer once it was downloaded
+    - Once the hackers gained access, they deployed their ransomware which encrypted critical files
+
+============================================================================================================================================
+Report using the 5W's framework
+============================================================================================================================================
+Date of report    : 28.07.23
+Description       : Documenting a cybersecurity incident
+Tool(s) used      : None
+The 5 W's         :
+                    Who    :    An organized group of unethical hackers 
+                    What   :    A successful email phishing attack which led to ransomeware security incident
+                    Where  :    A U.S. Health care clinic 
+                    When   :    Tuesday 9:00 am 
+                    Why    :    The incident occured because the unethical hackers were able to gain acccess through
+                                successful email phishing attack in which some employees were targeted. After the employees
+                                downloaded the attachment, the hackers deployed their ransomeware encrypting crtical files. 
+                                The attack seems to be financially motivated since the hackers offered decryption key in exchange
+                                for a large sum of money.
+Additional notes  : 
+                    What should be done to prevent such an incident from happening again?
+                    Should the company pay for the decryption key?
+    
