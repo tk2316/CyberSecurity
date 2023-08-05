@@ -1,0 +1,45 @@
+Task1: Use ifconfig to identify the interfaces that are available  (use ETH0):
+Solution1:
+    analyst@1ac6ab82bca5:~$ sudo ifconfig
+    eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1460
+            inet 172.18.0.2  netmask 255.255.0.0  broadcast 172.18.255.255
+            ether 02:42:ac:12:00:02  txqueuelen 0  (Ethernet)
+            RX packets 870  bytes 13686389 (13.0 MiB)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 695  bytes 56153 (54.8 KiB)
+            TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+    
+    lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+            inet 127.0.0.1  netmask 255.0.0.0
+            loop  txqueuelen 1000  (Local Loopback)
+            RX packets 99  bytes 12357 (12.0 KiB)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 99  bytes 12357 (12.0 KiB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+Task2: Use tcpdump to identify the interface options available for packet capture:
+Solution2: 
+    analyst@1ac6ab82bca5:~$ sudo tcpdump -D
+    1.eth0 [Up, Running]
+    2.any (Pseudo-device that captures on all interfaces) [Up, Running]
+    3.lo [Up, Running, Loopback]
+    4.nflog (Linux netfilter log (NFLOG) interface)
+    5.nfqueue (Linux netfilter queue (NFQUEUE) interface)
+
+Task3: capture five live packets eth0 interface
+Solution3: 
+    analyst@1ac6ab82bca5:~$ sudo tcpdump -i eth0 -v -c5
+    tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+    02:30:35.946023 IP (tos 0x0, ttl 64, id 463, offset 0, flags [DF], proto TCP (6), length 120)
+        1ac6ab82bca5.5000 > nginx-us-central1-b.c.qwiklabs-terminal-vms-prod-00.internal.38656: Flags [P.], cksum 0x5892 (incorrect -> 0x7797), seq 4218937979:4218938047, ack 2852669243, win 501, options [nop,nop,TS val 3338925512 ecr 3526731545], length 68
+    02:30:35.946292 IP (tos 0x0, ttl 63, id 52126, offset 0, flags [DF], proto TCP (6), length 52)
+        nginx-us-central1-b.c.qwiklabs-terminal-vms-prod-00.internal.38656 > 1ac6ab82bca5.5000: Flags [.], cksum 0x6c13 (correct), ack 68, win 507, options [nop,nop,TS val 3526731648 ecr 3338925512], length 0
+    02:30:35.956806 IP (tos 0x0, ttl 64, id 464, offset 0, flags [DF], proto TCP (6), length 145)
+        1ac6ab82bca5.5000 > nginx-us-central1-b.c.qwiklabs-terminal-vms-prod-00.internal.38656: Flags [P.], cksum 0x58ab (incorrect -> 0x6584), seq 68:161, ack 1, win 501, options [nop,nop,TS val 3338925523 ecr 3526731648], length 93
+    02:30:35.957091 IP (tos 0x0, ttl 63, id 52127, offset 0, flags [DF], proto TCP (6), length 52)
+        nginx-us-central1-b.c.qwiklabs-terminal-vms-prod-00.internal.38656 > 1ac6ab82bca5.5000: Flags [.], cksum 0x6ba0 (correct), ack 161, win 507, options [nop,nop,TS val 3526731659 ecr 3338925523], length 0
+    02:30:35.962841 IP (tos 0x0, ttl 64, id 32110, offset 0, flags [DF], proto UDP (17), length 69)
+        1ac6ab82bca5.43416 > metadata.google.internal.domain: 19122+ PTR? 2.0.17.172.in-addr.arpa. (41)
+    5 packets captured
+    8 packets received by filter
+    0 packets dropped by kernel
